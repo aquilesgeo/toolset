@@ -23,13 +23,11 @@ public class Model {
 		
 	}
 	
-	public Model baseHbm(String baseHbm){
-		this.baseHbm = baseHbm;
-		return this;
+	public void hbm(String baseHbm){
+
 	}
 	
-	public Model baseDomain(String baseDomain){
-		this.baseDomain = baseDomain;
-		return this;
+	public void domain(String baseDomain){
+		
 	}
 }

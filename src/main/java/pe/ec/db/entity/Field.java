@@ -1,27 +1,24 @@
 package pe.ec.db.entity;
 
-public class Field {
-	private String name;
+public class Field extends AbstractField {
 	private String sql;
 	private Type type;
-	private boolean pk;
 
 	public Field(String name) {
-		this.name = name;
-		this.pk = false;
+		super(name);
 	}
-	
-	public Field sql(String sql){
+
+	public Field sql(String sql) {
 		this.sql = sql;
 		return this;
 	}
-	
-	public Field type(Type type){
+
+	public Field type(Type type) {
 		this.type = type;
 		return this;
 	}
-	
-	public Field pk(){
+
+	public Field pk() {
 		this.pk = true;
 		return this;
 	}

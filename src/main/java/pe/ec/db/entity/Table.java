@@ -8,6 +8,7 @@ public class Table {
 	private String sql;
 	
 	private List<Field> fieldList = new ArrayList<Field>();
+	private List<ForeignKey> relatedList = new ArrayList<ForeignKey>();
 
 	public Table(String name) {
 		this.name = name;
@@ -24,4 +25,9 @@ public class Table {
 		return field;
 	}
 	
+	public ForeignKey fk(String name, Table related){
+		ForeignKey fk=new ForeignKey(name, related);
+		this.relatedList.add(fk);
+		return fk;
+	}
 }
