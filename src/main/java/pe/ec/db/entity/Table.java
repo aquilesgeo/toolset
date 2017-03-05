@@ -23,4 +23,5 @@ public class Table {
 		this.fieldList.add(field);
 		return field;
 	}
+	
 }
