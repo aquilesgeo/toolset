@@ -24,7 +24,7 @@ public class Model {
 	}
 	
 	public void hbm(String baseHbm){
-
+		
 	}
 	
 	public void domain(String baseDomain){
