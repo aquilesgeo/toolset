@@ -9,11 +9,7 @@ import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 
-/**
- * 
- * @author user
- *
- */
+
 public class TemplateEngine {
 	private String template;
 	private Map<String, Object> tokenMap = new HashMap<String, Object>();
