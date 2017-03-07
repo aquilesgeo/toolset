@@ -1,9 +1,15 @@
 package pe.ec.db.entity;
 
 public class EBookTempleTest extends ModelTest {
+<<<<<<< HEAD
 	public void testCreateDataModel() throws Exception{
 		Table book, party, author, item;
 		Model model = model("ebt").packageName("pe.ec.ebt.domain");
+=======
+	public void testCreateDataModel(){
+		Table book, party, author, item;
+		Model model = model("ebt");		
+>>>>>>> branch 'master' of https://github.com/aquilesgeo/toolset.git
 			
 			book = model.table("book").sql("_book");
 				book.field("id").pk().sql("_id").type(LONG);
@@ -23,7 +29,11 @@ public class EBookTempleTest extends ModelTest {
 				item.fk("book", book);
 				item.field("language").sql("_language");
 
+<<<<<<< HEAD
 		model.hibernateMap("data/etb-hibernate.xml");
+=======
+		model.hibernateMap("etb-hibernate.xml");
+>>>>>>> branch 'master' of https://github.com/aquilesgeo/toolset.git
 		model.domain("data/");
 		model.hbm("data/");
 	}

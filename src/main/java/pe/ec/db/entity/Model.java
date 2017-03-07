@@ -55,7 +55,11 @@ public class Model {
 	}
 	
 	public void hbm(String baseHbm){
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> branch 'master' of https://github.com/aquilesgeo/toolset.git
 	}
 	
 	public void domain(String baseDomain){
