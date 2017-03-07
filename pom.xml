@@ -6,9 +6,13 @@
 	<version>1.0</version>
 	<packaging>jar</packaging>
 	<name>toolset</name>
-	
-	
-	<dependencies>		
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.7</version>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
