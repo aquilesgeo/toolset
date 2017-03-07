@@ -1,9 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC 
- "-//Hibernate/Hibernate Mapping DTD//EN"
- "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
-
-<hibernate-mapping>
-   <class name="${name}" table="${name}">
-   </class>
-</hibernate-mapping>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="show_sql">false</property>
+		<property name="hibernate.validator.apply_to_ddl">false</property>
+		<property name="hibernate.validator.autoregister_listeners">false</property>
+				
+#foreach ($map in $mapList)
+    	<mapping resource="${domainPath}${map.entity}.htm.xml" />
+#end
+		
+	</session-factory>
+</hibernate-configuration>

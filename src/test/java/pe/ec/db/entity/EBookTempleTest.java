@@ -4,7 +4,7 @@ public class EBookTempleTest extends ModelTest {
 
 	public void testCreateDataModel() throws Exception{
 		Table book, party, author, item;
-		Model model = model("ebt");		
+		Model model = model("ebt").packageName("pe.ec.ebt.domain");		
 			
 			book = model.table("book").sql("_book");
 				book.field("id").pk().sql("_id").type(LONG);
@@ -26,9 +26,6 @@ public class EBookTempleTest extends ModelTest {
 
 
 		model.hibernateMap("data/etb-hibernate.xml");
-
-		model.hibernateMap("etb-hibernate.xml");
-
 		model.domain("data/");
 		model.hbm("data/");
 	}

@@ -16,6 +16,10 @@ public class Table {
 		this.entity = name.substring(0,1).toUpperCase()+name.substring(1);
 	}
 	
+	public String getEntity() {
+		return entity;
+	}
+	
 	public Table sql(String sql){
 		this.sql = sql;
 		return this;

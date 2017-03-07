@@ -5,6 +5,8 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import pe.ec.util.TemplateEngine;
+
 public class Model {
 	private String name;
 	private String baseDomain;
@@ -28,30 +30,15 @@ public class Model {
 		return this;
 	}
 	
-	public void hibernateMap(String fileName) throws Exception{		
-		PrintStream out = new PrintStream(new File(fileName));
+	public void hibernateMap(String fileName) throws Exception{
 		String domainPath = this.packageName.replaceAll("\\.", "/");
 		domainPath += "/";
 		
-		out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-		out.println("<!DOCTYPE hibernate-configuration PUBLIC");
-		out.println("\t\t\"-//Hibernate/Hibernate Configuration DTD 3.0//EN\"");
-		out.println("\t\t\"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd\">");
-		out.println("<hibernate-configuration>");
-		out.println("\t<session-factory>");
-		
-		out.println("\t\t<property name=\"show_sql\">false</property>");
-		out.println("\t\t<property name=\"hibernate.validator.apply_to_ddl\">false</property>");
-		out.println("\t\t<property name=\"hibernate.validator.autoregister_listeners\">false</property>");
-		
-		for(Table table:this.tableList){
-			out.println("\t\t<mapping resource=\""+domainPath+table.entity+".hbm.xml\" />");
-		}
-		
-		out.println("\t</session-factory>");
-		out.println("<hibernate-configuration>");
-		
-		out.close();
+		TemplateEngine.instance()
+			.v("mapList", this.tableList)
+			.v("domainPath", domainPath)
+			.template("vm/db/hibernate-hbm-xml.vm")
+			.generate(fileName);
 	}
 	
 	public void hbm(String baseHbm){
