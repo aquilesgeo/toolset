@@ -1,0 +1,39 @@
+<project name="form-portal" default="deploy">
+	<property name="war.name" value="carelogic" />
+	<property name="tomcat.dir" value="/cdc/apache-tomcat-7x-orbeon"/>
+	<property name="tomcat.webapp" value="${tomcat.dir}/webapps" />
+	
+	<target name="tomcat-stop">
+	    <java jar="${tomcat.dir}/bin/bootstrap.jar" fork="true">
+	        <jvmarg value="-Dcatalina.home=${tomcat.dir}"/>
+	        <arg line="stop"/>
+	    </java>
+	</target>
+	
+	<target name="deploy">		
+		<delete dir="target"/>
+		
+		<exec executable="cmd">
+			<arg value="/c"/>
+			<arg value="mvn"/>
+			<arg value="package"/>
+			<arg value="-Dmaven.test.skip"/>
+		</exec>
+		
+		
+		<delete file="${tomcat.dir}/webapps/carelogic.war"/>
+		<delete dir="${tomcat.dir}/webapps/carelogic"/>		
+		<copy file="./target/carelogic.war" todir="${tomcat.dir}/webapps/"/>
+	
+	</target>
+	
+	<target name="update-jsp-webapp">
+			<copy todir="${tomcat.webapp}/${war.name}">
+				<fileset dir="src/main/webapp">
+					<include name="**/*.jsp" />
+					<include name="**/*.js" />
+					<include name="**/*.css" />
+				</fileset>
+			</copy>
+		</target>
+</project>
