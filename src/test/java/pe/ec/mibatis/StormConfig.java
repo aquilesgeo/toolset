@@ -12,8 +12,14 @@ public class StormConfig  extends Mapping{
 			.id("SOURCE_TOPOLOGY_ID", "id")
 			.col("TOPOLOGY_NAME", "name")
 			.col("GROUP_ID", "groupId")
-			.col("STATUS", "status")
-			.all();
+			.col("STATUS", "status");
+		form("Edit Topic").object("topic")
+			.hidden("id").prop()
+			.input("Name", "name").prop()
+			.input("Group", "groupId").prop();
+		form("Add Topic")
+			.input("Name", "name")
+			.input("Group", "groupId");
 	}
 
 	@Test
@@ -21,8 +27,7 @@ public class StormConfig  extends Mapping{
 		table("SOURCE_TOPOLOGY_CONFIG").alias("config").entity("TopologyConfig")
 			.id("SOURCE_TOPOLOGY_CONFIG_ID", "id")
 			.col("KEY", "key")
-			.col("VALUE", "value")
-			.all();
+			.col("VALUE", "value");
 	}
 	
 	@Test
@@ -31,8 +36,7 @@ public class StormConfig  extends Mapping{
 			.id("SOURCE_TOPIC_ID", "id")
 			.col("SOURCE_TOPOLOGY_ID", "topologyId")
 			.col("TOPIC_NAME", "name")
-			.col("STATUS", "status")
-			.all();
+			.col("STATUS", "status");
 	}
 	
 	@Test

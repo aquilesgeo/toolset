@@ -1,9 +1,10 @@
 package pe.ec.mibatis.handler;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Table {
+public class Table extends Handler{
 	String name;
 	String alias;
 	String entity;
@@ -45,7 +46,7 @@ public class Table {
 		return this;
 	}
 
-	public Table resultMap() {
+	public Table resultMap(PrintStream out) {
 		System.out.println("\t<resultMap id=\"" + alias + "Map\"\r\n" + "\t\ttype=\""+packageName+".model."
 				+ entity + "\">\r\n" + "\t\t<id property=\""+idProperty+"\" column=\""+idName+"\" />");
 		for (Column column : columnList) {
@@ -56,7 +57,7 @@ public class Table {
 		return this;
 	}
 
-	public Table get() {
+	public Table get(PrintStream out) {
 		System.out.println("\t<select id=\"get" + entity + "\" resultMap=\"" + alias + "Map\" parameterType=\"long\">");
 		System.out.println("\t\tselect * from " + name.toUpperCase() + " where "+idName+"=#{id}");
 		System.out.println("\t</select>");
@@ -64,7 +65,7 @@ public class Table {
 		return this;
 	}
 
-	public Table list(String order) {
+	public Table list(PrintStream out, String order) {
 		System.out.println("\t<select id=\"list" + entity + "s\" resultMap=\"" + alias + "Map\">");
 		System.out.println("\t\tselect * from " + name.toUpperCase() + " order by " + order);
 		System.out.println("\t</select>");
@@ -72,7 +73,7 @@ public class Table {
 		return this;
 	}
 
-	public Table insert() {
+	public Table insert(PrintStream out) {
 		System.out.println(
 				"\t<insert id=\"insert" + entity + "\" useGeneratedKeys=\"true\" keyColumn=\""+idName+"\" keyProperty=\""+idProperty+"\">");
 		System.out.print("\t\tinsert into " + name + " (");
@@ -102,7 +103,7 @@ public class Table {
 		return this;
 	}
 
-	public Table update() {
+	public Table update(PrintStream out) {
 		System.out.println("\t<update id=\"update" + entity + "\">");
 		System.out.println("\t\tupdate " + name + " set ");
 		boolean first = true;
@@ -121,33 +122,11 @@ public class Table {
 		return this;
 	}
 
-	public Table formUpdate() {
-		System.out.println("\t<form:form title=\"Edit "+alias+"\" save=\"true\">");
-		System.out.println("\t\t<form:hidden name=\"id\" value=\"${" + alias + "."+idProperty+"}\"/>");
-		for (Column column : columnList) {
-			System.out.println("\t\t<form:input label=\"" + column.name.toUpperCase() + "\" name=\"" + column.property
-					+ "\" value=\"${" + alias + "." + column.property + "}\"/>");
-		}
-		System.out.println("\t</form:form>");
-		return this;
-	}
-
-	public Table formInsert() {
-		System.out.println("\t<form method=\"Add "+alias+"\" save=\"true\">");
-		for (Column column : columnList) {
-			System.out.println(
-					"\t\t <form:input label=\""+column.name.toUpperCase()+"\" name=\"" + column.property + "\"/>");
-		}
-		System.out.println("\t</form:form>");
-		return this;
-	}
-	public void all() {
-		resultMap();
-		get();
-		update();
-		insert();
-		formUpdate();
-		formInsert();
+	public void show(PrintStream out) {
+		resultMap(out);
+		get(out);
+		update(out);
+		insert(out);
 	}
 }
 

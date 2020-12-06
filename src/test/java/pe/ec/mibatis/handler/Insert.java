@@ -28,7 +28,7 @@ public class Insert extends Handler {
 		return total;
 	}
 
-	public void mapping(PrintStream out) {
+	public void show(PrintStream out) {
 		out.format(
 				"<insert id=\"insert%s\" useGeneratedKeys=\"true\" keyProperty=\"%s\">\r\n" + 
 				"  insert into %s (%s)\r\n" + 
