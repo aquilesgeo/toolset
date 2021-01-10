@@ -15,7 +15,7 @@ public class Multitenant extends Mapping{
 			.col("CODE","code")
 			.col("STATUS","status");
 	}
-	
+
 	@Test
 	public void generateConnection() {
 		table("MULTITENANTCONNECTION")

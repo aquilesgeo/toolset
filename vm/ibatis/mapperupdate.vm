@@ -1,0 +1,10 @@
+#set($propertyId="#{"+$entityObject+"."+$idProperty+"}")
+	<update id="$updateId">
+		update $tableName set 
+#foreach($col in $columns)
+#set($property="#{"+$entityObject+"."+$col.property+"}")
+			$col.column = #{$col.property}#if($foreach.hasNext), #end
+
+#end
+		where $idColumn=$propertyId
+	</update>

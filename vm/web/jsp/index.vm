@@ -1,0 +1,45 @@
+<html>
+<head>
+<style type="text/css">
+.tdMenu {
+	vertical-align: top;
+	width: 120px;
+	background: #404050;
+}
+.tdMenu div {
+	padding:2px;
+}
+.tdMenu div:hover{
+	background:#505060;
+}
+.tdMenu a {
+	color: #ffffff;
+	text-decoration: none;
+	font: 12px Arial;
+}
+</style>
+</head>
+<body style="padding: 0px; margin: 0px">
+	<table
+		style="width: 100%; height: 100%; border-collapse: collapse; margin: 0px">
+		<tr style="height: 24px">
+			<td colspan="2" style="background: #202040; color: #ffffff">
+				$app</td>
+		</tr>
+		<tr>
+			<td class="tdMenu"><div>
+					<a href="connection/index.htm" target="_content" class="">Item</a>
+				</div>
+				<div>
+					<a href="system/index.htm" target="_content">Item</a>
+				</div></td>
+			<td><iframe src="intro.htm" name="_content"
+					style="border: 0px; width: 100%; height: 100%"></iframe></td>
+		</tr>
+		<tr style="height: 20px">
+			<td colspan="2">$creditos &copy;</td>
+		</tr>
+	</table>
+
+</body>
+</html>

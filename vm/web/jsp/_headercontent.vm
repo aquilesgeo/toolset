@@ -1,0 +1,5 @@
+<%@ taglib uri="/WEB-INF/taglib/Html.tld" prefix="html" %> 
+<%@ taglib uri="/WEB-INF/taglib/Form.tld" prefix="form" %> 
+<head>
+	<link href="${pageContext.request.contextPath}/css/content.css?1" rel="stylesheet">
+</head>
