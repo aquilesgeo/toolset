@@ -15,6 +15,7 @@ public class Data {
 		.generate();
 		Base.line();
 	}
+	
 	public void mapperUpdate(String updateId, String entity, String tableName, String idColumn, String idProperty, Column ... columns) {
 		String entityObject = entity.substring(0,1).toLowerCase() + entity.substring(1);
 		Base.template("vm\\ibatis\\mapperupdate.vm")
